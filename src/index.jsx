@@ -17,13 +17,8 @@ let deck = new Reveal({
 render(() => <App />, document.getElementById('root'));
 deck.initialize({
     center: false,
-    margin: 0
-})
-deck.on('slidechanged', event => {
-    const last = event.previousSlide.getAttribute('header')
-    const current = event.currentSlide.getAttribute('header')
-
-    event.currentSlide.appendChild(<header>{current}</header>)
+    margin: 0,
+    display: 'flex'
 })
 
 export {deck}
