@@ -4,6 +4,14 @@ body {
     --primary: #03a9f4;
     --primary-light: #67daff;
     --primary-dark: #007ac1;
+
+    --foreground-normal: #4f5464;
+	--foreground-normal-alt: #172940;
+	--foreground-subdued: #a2b5cd;
+
+	--background-normal: #f0f4f9;
+	--background-normal-alt: #e4eaf1;
+	--background-subdued: #f7fafc;
 }
 
 header {
@@ -46,10 +54,27 @@ section {
     height: 100%;
 }
 
+panel {
+    display: block;
+    padding: 10px;
+    background-color: var(--background-normal);
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+panel-title {
+    font-size: 28px;
+    display: block;
+    color: var(--primary);
+}
+
 .content {
     display: block;
     margin: auto;
     width: 100%;
+    font-size: 28px;
+    text-align: left;
+    padding: 40px;
 }
 
 div[inline] {

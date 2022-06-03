@@ -41,6 +41,41 @@ function App() {
                 </ul>
             </Section>
 
+            <Section id="h2" header={headers[2]}>
+                Planung eines Tages im Urlaub:<br/>
+                <ul>
+                    <li>Möglichst viele Aktivitäten an einem Tag</li>
+                    <li>Aktivitäten dürfen sich nicht überschneiden</li>
+                </ul>
+            </Section>
+
+            <Section header={headers[2]}>
+                ...
+            </Section>
+
+            <Section id="h3" header={headers[3]}>
+                Was ist der kürzeste Weg von Dresden nach Alesund?<br/>
+                ...
+            </Section>
+
+            <Section header={headers[3]}>
+                Wie erkennt man, wann Greedy Algorithmen optimale Lösungen zu Problemen bieten?
+                <panel>
+                    <panel-title>Optimale Substruktur</panel-title>
+                    Sublösungen müssen Teil der optimalen Gesamtlösung sein.
+                </panel>
+
+                <panel>
+                    <panel-title>Gierige Entscheidungs Eigenschaft</panel-title>
+                    Die momentan beste Entscheidung muss zu einer global optimalen Lösung führen.
+                </panel>
+
+                <panel danger>
+                    <panel-title>Achtung</panel-title>
+                    Beide Eigenschaften bieten nicht immer eine Garantie.
+                </panel>
+            </Section>
+
             <Section header={headers[1]} skip-counter>
                 Section 2
             </Section>

@@ -7,7 +7,7 @@ function Section(props) {
         <footer data-id="header">
             <span>Nils Twelker</span>
             <span>TU Dresden 2022 | Proseminar Theoretische Informatik</span>
-            <span>{counter(!props['skip-counter'])}</span>
+            <span style="min-width: 20px;">{counter(!props['skip-counter'])}</span>
         </footer>
     </section>
 }
