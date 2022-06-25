@@ -1,4 +1,5 @@
 import Section from "./Section";
+import SelectionProblem from "./SelectionProblem";
 
 function App() {
     const headers = [
@@ -41,13 +42,7 @@ function App() {
                 </ul>
             </Section>
 
-            <Section id="h2" header={headers[2]}>
-                Planung eines Tages im Urlaub:<br/>
-                <ul>
-                    <li>Möglichst viele Aktivitäten an einem Tag</li>
-                    <li>Aktivitäten dürfen sich nicht überschneiden</li>
-                </ul>
-            </Section>
+            <SelectionProblem header={headers[2]}/>
 
             <Section header={headers[2]}>
                 ...
@@ -93,6 +88,8 @@ function App() {
                 <div inline data-id="1">{"$sum_{i=0}$"}</div>
                 <div inline>{"$ = 3$"}</div>
             </Section>
+
+            
         </div>
     );
 }

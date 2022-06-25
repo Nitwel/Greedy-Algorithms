@@ -1,0 +1,45 @@
+.events {
+    margin: 20px 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.events table tr:nth-child(1) td:nth-child(2) {
+    width: 100px;
+}
+
+.events table {
+    margin-bottom: 20px;
+}
+
+.targets {
+    font-size: 20px;
+}
+
+.targets ul {
+    display: block;
+}
+
+.random {
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: var(--primary-light);
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.random:hover {
+    background-color: var(--primary);
+}
+
+.random:active {
+    transform: scale(0.9);
+}

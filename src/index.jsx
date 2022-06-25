@@ -18,7 +18,8 @@ render(() => <App />, document.getElementById('root'));
 deck.initialize({
     center: false,
     margin: 0,
-    display: 'flex'
+    display: 'flex',
+    autoAnimateUnmatched: false
 })
 
-export {deck}
+export default deck
