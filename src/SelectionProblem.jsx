@@ -158,7 +158,24 @@ function SelectionProblem(props) {
 </Section>
 }</For>
 <Section header={props.header}>
-    
+    Pseudocode des Algorithmus
+    <pre><code data-line-numbers="1-3|4-8|9-16">{`a = {${events().map(event => event.name).slice(0,6).join(', ') + ', ...'}}
+s = {${events().map(event => formatTime(event.start)).join(', ')}}
+e = {${events().map(event => formatTime(event.end)).join(', ')}}
+
+function Aktivitätsauswähler(a, s, e) {
+    Sortiere Aktivitäten nach ihrem Endzeitpunkt
+    k = 1
+    L = {a[k]}
+    for i = 2 to length(s) {
+        if s[i] >= e[k] {
+            A = A + {a[i]}
+            k = i
+        }
+    }
+    return L
+}
+    `}</code></pre>
 </Section>
 </>}
 
