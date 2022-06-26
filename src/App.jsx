@@ -1,5 +1,6 @@
 import Section from "./Section";
 import SelectionProblem from "./SelectionProblem";
+import ShortestPath from "./ShortestPath";
 
 function App() {
     const headers = [
@@ -44,14 +45,7 @@ function App() {
 
             <SelectionProblem header={headers[2]}/>
 
-            <Section header={headers[2]}>
-                ...
-            </Section>
-
-            <Section id="h3" header={headers[3]}>
-                Was ist der kürzeste Weg von Dresden nach Alesund?<br/>
-                ...
-            </Section>
+            <ShortestPath header={headers[3]}/>
 
             <Section header={headers[3]}>
                 Wie erkennt man, wann Greedy Algorithmen optimale Lösungen zu Problemen bieten?
@@ -74,7 +68,7 @@ function App() {
             <Section header={headers[1]} skip-counter>
                 Section 2
             </Section>
-            <Section id="h2" header={headers[1]}>
+            <Section header={headers[1]}>
                 Section 2
             </Section>
             <Section header={headers[2]} data-auto-animate>

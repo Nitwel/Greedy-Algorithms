@@ -75,6 +75,11 @@ panel-title {
     font-size: 28px;
     text-align: left;
     padding: 40px;
+    padding-top: 70px;
+}
+
+section[top] .content {
+    margin: 0;
 }
 
 div[inline] {

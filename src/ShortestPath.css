@@ -1,0 +1,44 @@
+.map {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+}
+
+.lines {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+}
+
+.data {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    transform: translate(-4px, -4px);
+}
+
+.circle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #68b0f4;
+}
+
+.text {
+    position: absolute;
+    font-size: 12px;
+}
+
+.line {
+    stroke: #68b0f4;
+    stroke-width: 1px;
+}
+
+.title {
+    font-size: 22px;
+}

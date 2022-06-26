@@ -1,7 +1,12 @@
 import counter from "./counter"
 
 function Section(props) {
-    return <section data-auto-animate={props['data-auto-animate']} data-auto-animate-duration={props['data-auto-animate-duration']} id={props.id}>
+    return <section
+        data-auto-animate={props['data-auto-animate']}
+        data-auto-animate-duration={props['data-auto-animate-duration']}
+        top={props['top']}
+        id={props.id}
+    >
         <header>{props.header}</header>
         <div class="content">{props.children}</div>
         <footer>
