@@ -21,7 +21,7 @@ deck.initialize({
     margin: 0,
     display: 'flex',
     autoAnimateUnmatched: false,
-    history: true
+    history: true,
 })
 
 export default deck

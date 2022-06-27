@@ -100,10 +100,10 @@ function SelectionProblem(props) {
         </table>
     </div>
     <div class="targets fragment" data-fragment-index="3">
-        Ziele:
-        <div class="fragment">Menge aller optimalen Lösungen: $L$</div>
-        <div class="fragment">{"$ 1. \\\\ \\\\forall l \\\\subseteq A: \\\\ wenn \\\\ \\\\exists m: \\\\ |m| > |l| \\\\ dann \\\\ l \\\\notin L $"}</div>
-        <div class="fragment">{"$ 2. \\\\ \\\\forall  (a_i,a_j): e_i < s_j \\\\vee e_j < s_i $"}</div>
+        Einschränkungen:
+        <div class="fragment">Menge aller optimalen Lösungen: $\\Omega_L$</div>
+        <div class="fragment">{String.raw`$ 1. \\ \\forall (L_x, L_y) \\in \\Omega: |L_x| > |L_y| \\Rightarrow L_y \\notin \\Omega_L $`}</div>
+        <div class="fragment">{String.raw`$ 2. \\ \\forall  (a_i,a_j) \\in L \\in \\Omega_L: e_i < s_j \\vee e_j < s_i $`}</div>
     </div>
     <button onClick={random} class="random"><span class="material-icons">sync</span></button>
 </Section>

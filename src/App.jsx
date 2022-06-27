@@ -1,3 +1,4 @@
+import Motivation from "./Motivation";
 import Section from "./Section";
 import SelectionProblem from "./SelectionProblem";
 import ShortestPath from "./ShortestPath";
@@ -25,23 +26,8 @@ function App() {
                     }</For>
                 </ul>
             </Section>
-            <Section id="h1" header={headers[1]}>
-                Effizientes lösen von Optimierungsproblemen<br/>
-                Beispiele:<br/>
-                <ul>
-                    <li>Planung von Aktivitäten an einem Tag</li>
-                    <li>Planung der effizientesten Flugroute</li>
-                    <li>Optimale packen eines Koffers</li>
-                </ul>
-            </Section>
-
-            <Section header={headers[1]}>
-                Was für Lösungsansätze könnten wir wählen?<br/>
-                <ul>
-                    <li>Greedy Algorithmen</li>
-                    <li>Dynamische Algorithmen</li>
-                </ul>
-            </Section>
+            
+            <Motivation header={headers[1]}/>
 
             <SelectionProblem header={headers[2]}/>
 

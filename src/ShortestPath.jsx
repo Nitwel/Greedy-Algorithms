@@ -33,7 +33,11 @@ function ShortestPath(props) {
     ]
 
     function getAirport(key) {
-        return airports.find(a => a.key = key)
+        return airports.find(a => a.key === key)
+    }
+
+    function distance(airport1, airport2) {
+        return Math.sqrt(Math.pow(airport2.x - airport1.x, 2) + Math.pow(airport2.y - airport1.y, 2))
     }
 
     function getDistances(fromAirport) {
@@ -41,7 +45,7 @@ function ShortestPath(props) {
             if(airport.key !== fromAirport.key) {
                 acc.push({
                     key: airport.key,
-                    distance: Math.sqrt(Math.pow(airport.x - fromAirport.x, 2) + Math.pow(airport.y - fromAirport.y, 2)),
+                    distance: distance(fromAirport, airport),
                     x1: fromAirport.x,
                     y1: fromAirport.y,
                     x2: airport.x,
@@ -72,13 +76,16 @@ function ShortestPath(props) {
         }
     }
 
+    const [from, setFrom] = createSignal('dre')
+    const [to, setTo] = createSignal('ale')
+
     return <>
 <Section id="h3" header={props.header} top data-auto-animate>
     <SVG class="map"/>
     <div class="data">
         <For each={airports}>{(airport) => <>
-            <div class="circle" style={`left: ${airport.x}px; top: ${airport.y}px`} data-id={'circle'+airport.key}/>
-            <div class="text" style={`left: ${airport.x + 8}px; top: ${airport.y + 4}px`} data-id={'text'+airport.key}>{airport.name}</div>
+            <div class="circle" style={`left: ${airport.x}px; top: ${airport.y}px`}/>
+            <div class="text" style={`left: ${airport.x + 8}px; top: ${airport.y + 4}px`}>{airport.name}</div>
         </>}</For>
     </div>
     <div class="title">Was ist der kürzeste Weg von Dresden nach Alesund?</div>
@@ -87,8 +94,8 @@ function ShortestPath(props) {
     <SVG class="map"/>
     <div class="data">
         <For each={airports}>{(airport) => <>
-            <div class="circle" style={`left: ${airport.x}px; top: ${airport.y}px`} data-id={'circle'+airport.key}/>
-            <div class="text" style={`left: ${airport.x + 8}px; top: ${airport.y + 4}px`} data-id={'text'+airport.key}>{`$a_{${airport.i}}$`}</div>
+            <div class="circle" style={`left: ${airport.x}px; top: ${airport.y}px`}/>
+            <div class="text" style={`left: ${airport.x + 8}px; top: ${airport.y + 4}px`}>{`$a_{${airport.i}}$`}</div>
         </>}</For>
     </div>
     <div class="title">Was ist der kürzeste Weg von Dresden nach Alesund?</div>
@@ -102,11 +109,11 @@ function ShortestPath(props) {
     </svg>
     <div class="data">
         <For each={airports}>{(airport) => <>
-            <div class="circle" style={`left: ${airport.x}px; top: ${airport.y}px`} data-id={'circle'+airport.key}/>
-            <div class="text" style={`left: ${airport.x + 8}px; top: ${airport.y + 4}px`} data-id={'text'+airport.key}>{`$a_{${airport.i}}$`}</div>
+            <div class={`circle ${from() === airport.key ? 'from' : ''} ${to() === airport.key ? 'to' : ''}`} style={`left: ${airport.x}px; top: ${airport.y}px`}/>
+            <div class="text" style={`left: ${airport.x + 8}px; top: ${airport.y + 4}px`}>{`$a_{${airport.i}}$`}</div>
         </>}</For>
     </div>
-    <div class="title">Was ist der kürzeste Weg von Dresden nach Alesund?</div>
+    <div class="title">Was ist der kürzeste Weg von <span class="from">{getAirport(from()).name}</span> nach <span class="to">{getAirport(to()).name}</span>?</div>
 </Section>
     </>
 }

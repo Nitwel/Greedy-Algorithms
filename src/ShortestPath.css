@@ -29,6 +29,22 @@
     background-color: #68b0f4;
 }
 
+.circle.from {
+    background-color: #ffb300;
+}
+
+.circle.to {
+    background-color: #00c897;
+}
+
+span.from {
+    color: #ffb300;
+}
+
+span.to {
+    color: #00c897;
+}
+
 .text {
     position: absolute;
     font-size: 12px;

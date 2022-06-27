@@ -30,7 +30,9 @@ footer {
     background-color: var(--primary);
     display: flex;
     justify-content: space-around;
-    font-size: 14px;
+    align-items: center;
+    font-weight: 400;
+    font-size: 12px;
     color: white;
 }
 
@@ -88,4 +90,13 @@ div[inline] {
 
 html.print-pdf .reveal .slides section {
     display: flex !important;
+}
+
+span.katex {
+    font-size: 1em;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+    font-weight: 500;
+    text-transform: none;
 }
