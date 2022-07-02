@@ -9,7 +9,7 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    z-index: 0;
+    z-index: -1;
 }
 
 .data {
@@ -30,24 +30,31 @@
 }
 
 .circle.from {
-    background-color: #ffb300;
+    background-color: var(--yellow);
 }
 
 .circle.to {
-    background-color: #00c897;
+    background-color: var(--green);
 }
 
 span.from {
-    color: #ffb300;
+    color: var(--yellow);
 }
 
 span.to {
-    color: #00c897;
+    color: var(--green);
+}
+
+.text-small {
+    font-size: 16px;
+    position: absolute;
 }
 
 .text {
     position: absolute;
-    font-size: 12px;
+    font-size: 20px;
+    user-select: none;
+    cursor: pointer;
 }
 
 .line {
@@ -55,6 +62,32 @@ span.to {
     stroke-width: 1px;
 }
 
+.line.greedy {
+    stroke: var(--red);
+    stroke-width: 2px;
+}
+
+.line.astar {
+    stroke: var(--yellow);
+    stroke-width: 2px;
+}
+
+.line.astar.greedy {
+    stroke: var(--orange);
+    stroke-width: 2px;
+}
+
 .title {
-    font-size: 22px;
+    font-size: 28px;
+}
+
+.stats {
+    position: absolute;
+    top: 120px;
+    right: 20px;
+    text-align: right;
+}
+
+.reveal a.back {
+    position: unset;
 }

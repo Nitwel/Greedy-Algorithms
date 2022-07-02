@@ -1,9 +1,15 @@
 body {
     margin: 0;
+    background-color: var(--background-normal) !important;
 
     --primary: #03a9f4;
     --primary-light: #67daff;
     --primary-dark: #007ac1;
+
+    --yellow: #ffb300;
+    --red: #e35169;
+    --orange: #ee9746;
+    --green: #00c897;
 
     --foreground-normal: #4f5464;
 	--foreground-normal-alt: #172940;
@@ -14,11 +20,16 @@ body {
 	--background-subdued: #f7fafc;
 }
 
+.reveal .slides section {
+    background-color: white;
+}
+
 header {
     position: absolute;
     top: 10px;
     left: 10px;
     z-index: 500;
+    font-size: 26px;
 }
 
 footer {
@@ -36,7 +47,7 @@ footer {
     color: white;
 }
 
-footer::before, footer::after {
+/* footer::before, footer::after {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -44,7 +55,7 @@ footer::before, footer::after {
     content: '';
     width: 100vw;
     background-color: var(--primary);
-}
+} */
 
 footer::after {
     right: unset;
@@ -74,7 +85,7 @@ panel-title {
     display: block;
     margin: auto;
     width: 100%;
-    font-size: 28px;
+    font-size: 32px;
     text-align: left;
     padding: 40px;
     padding-top: 70px;
@@ -99,4 +110,34 @@ span.katex {
 .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
     font-weight: 500;
     text-transform: none;
+}
+
+.reveal h3 {
+    font-size: 36px;
+}
+
+button.bottom {
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: var(--primary-light);
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+button.bottom:hover {
+    background-color: var(--primary);
+}
+
+button.bottom:active {
+    transform: scale(0.9);
+}
+
+.reveal button a, .reveal button a:hover {
+    color: inherit;
 }

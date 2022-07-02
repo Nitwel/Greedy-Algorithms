@@ -1,6 +1,6 @@
 .events {
     margin: 20px 0;
-    font-size: 16px;
+    font-size: 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -15,31 +15,14 @@
 }
 
 .targets {
-    font-size: 20px;
+    font-size: 28px;
 }
 
 .targets ul {
     display: block;
 }
 
-.random {
-    position: absolute;
-    bottom: 30px;
-    right: 10px;
-    cursor: pointer;
-    border: none;
-    background-color: var(--primary-light);
-    color: white;
-    padding: 5px;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-}
-
-.random:hover {
-    background-color: var(--primary);
-}
-
-.random:active {
-    transform: scale(0.9);
+.flex {
+    display: flex;
+    justify-content: space-between;
 }

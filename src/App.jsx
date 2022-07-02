@@ -49,27 +49,7 @@ function App() {
                     <panel-title>Achtung</panel-title>
                     Beide Eigenschaften bieten nicht immer eine Garantie.
                 </panel>
-            </Section>
-
-            <Section header={headers[1]} skip-counter>
-                Section 2
-            </Section>
-            <Section header={headers[1]}>
-                Section 2
-            </Section>
-            <Section header={headers[2]} data-auto-animate>
-                <h1>Hello Math</h1>
-                <div inline>{"$J(\theta_0,\theta_1) = $"}</div>
-                <div inline data-id="1">{"$ sum_{i=0}$"}</div>
-            </Section>
-
-            <Section header={headers[2]} skip-counter data-auto-animate>
-                <h1>Hello Math</h1>
-                <div inline data-id="1">{"$sum_{i=0}$"}</div>
-                <div inline>{"$ = 3$"}</div>
-            </Section>
-
-            
+            </Section>            
         </div>
     );
 }
