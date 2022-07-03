@@ -1,0 +1,62 @@
+.koffer {
+    position: absolute;
+    width: 250px;
+}
+
+.koffer-container {
+    position: relative;
+    perspective: 1000px;
+    height: 501px;
+}
+
+.kofferTop {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-origin: 0px;
+    transition: transform 500ms ease-in-out;
+    z-index: 2;
+}
+
+.kofferTop.open {
+    transform: rotateY(-120deg);
+}
+
+.max-weight {
+    position: absolute;
+    top: 490px;
+    left: 50px;
+    z-index: 0;
+}
+
+.parallel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item {
+    width: 213px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    background-color: var(--green);
+    border-radius: 10px;
+}
+
+.koffer-space {
+    margin: 129px 0 0 19px;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px
+}

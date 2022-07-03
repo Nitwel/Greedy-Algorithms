@@ -1,3 +1,4 @@
+import Knapsack from "./Knapsack";
 import Motivation from "./Motivation";
 import Section from "./Section";
 import SelectionProblem from "./SelectionProblem";
@@ -49,7 +50,9 @@ function App() {
                     <panel-title>Achtung</panel-title>
                     Beide Eigenschaften bieten nicht immer eine Garantie.
                 </panel>
-            </Section>            
+            </Section>    
+
+            <Knapsack header={headers[3]}/>        
         </div>
     );
 }
