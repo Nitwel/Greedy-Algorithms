@@ -53,21 +53,28 @@ function SelectionProblem(props) {
         const steps = [
             {events: events(), solutions: []},
             {events: eventsSorted(), solutions: []},
-            {events: eventsSorted().slice(1), solutions: [eventsSorted()[0]], type: 'add'}
         ]
 
-        while(steps.at(-1).events.length > 0) {
-            const lastEnd = steps.at(-1).solutions.at(-1).end
-            const nextStart = steps.at(-1).events.at(0).start
+        for(let i = 0; i < eventsSorted().length; i++) {
+            const lastEnd = steps.at(-1).solutions.at(-1)?.end ?? 0
+            const nextStart = steps.at(-1).events.at(i).start
+
             if(nextStart < lastEnd) {
-                steps.push({events: steps.at(-1).events.slice(1), solutions: steps.at(-1).solutions, type: 'remove'})
+                steps.push({events: grayOut(eventsSorted(), i), solutions: steps.at(-1).solutions})
             } else {
-                steps.push({events: steps.at(-1).events.slice(1), solutions: [...steps.at(-1).solutions, steps.at(-1).events.at(0)], type: 'add'})
+                steps.push({events: grayOut(eventsSorted(), i), solutions: [...steps.at(-1).solutions, steps.at(-1).events.at(i)], type: 'add'})
 
             }
         }
 
         return steps
+    }
+
+    function grayOut(list, n) {
+        return list.map((l, i) => {
+            if(i <= n) return {...l, gray: true}
+            return l
+        })
     }
 
     function random() {
@@ -113,8 +120,8 @@ function SelectionProblem(props) {
 </Section>
 <For each={steps()}>{(step, i) => 
     <Section header={props.header} data-auto-animate data-auto-animate-duration="0.5">
-        <div class="events">
-            <Show when={step.events.length > 0}>
+        <div class="events flex">
+            <div>
                 <div>Aktivitäten $A$</div>
                 <table data-id={`table-${i()}`}>
                     <thead>
@@ -127,6 +134,29 @@ function SelectionProblem(props) {
                     </thead>
                     <tbody>
                         <For each={step.events}>{(event) =>
+                            <tr data-id={"aa" +event.i} class={'gray' in event ? 'gray' : ''}>
+                                <td>{event.i}</td>
+                                <td>{event.name}</td>
+                                <td>{formatTime(event.start)}</td>
+                                <td>{formatTime(event.end)}</td>
+                            </tr>
+                        }</For>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <div>Lösung $L$</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>$i$</td>
+                            <td>Aktivität $a_i$</td>
+                            <td>Start $s_i$</td>
+                            <td>Ende $e_i$</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <For each={step.solutions}>{(event) =>
                             <tr data-id={"aa" +event.i}>
                                 <td>{event.i}</td>
                                 <td>{event.name}</td>
@@ -136,28 +166,7 @@ function SelectionProblem(props) {
                         }</For>
                     </tbody>
                 </table>
-            </Show>
-            <div>Lösung $L$</div>
-            <table>
-                <thead>
-                    <tr>
-                        <td>$i$</td>
-                        <td>Aktivität $a_i$</td>
-                        <td>Start $s_i$</td>
-                        <td>Ende $e_i$</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <For each={step.solutions}>{(event) =>
-                        <tr data-id={"aa" +event.i}>
-                            <td>{event.i}</td>
-                            <td>{event.name}</td>
-                            <td>{formatTime(event.start)}</td>
-                            <td>{formatTime(event.end)}</td>
-                        </tr>
-                    }</For>
-                </tbody>
-            </table>
+            </div>
         </div>
 </Section>
 }</For>
@@ -180,6 +189,14 @@ function Aktivitätsauswähler(a, s, e) {
     return L
 }
     `}</code></pre>
+</Section>
+<Section header={props.header}>
+    <h3>Zu beobachtende Eigenschaften</h3>
+    <ul>
+        <li>Wählen des nächst besten Wertes</li>
+        <li>Auswahl wird lokal entschieden</li>
+        <li>Auswahlstrategie ändert sich nicht</li>
+    </ul>
 </Section>
 </>}
 

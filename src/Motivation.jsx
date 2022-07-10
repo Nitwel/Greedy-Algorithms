@@ -4,7 +4,7 @@ function Motivation(props) {
     return <>
 
 <Section id="h1" header={props.header}>
-    <h3>Effizientes lösen von Optimierungsproblemen</h3>
+<h3>Effizientes Lösen von Optimierungsproblemen</h3>
 
     <panel>
         <panel-title>Optimierungsproblem</panel-title>
@@ -12,25 +12,35 @@ function Motivation(props) {
         Fitnessfunktion: {String.raw`$ f: \\Omega \\rightarrow \\mathbb{R}  $`}<br/>
         Ziel: {String.raw`$ min\\{f(x) | x \\in \\Omega\\} $`} oder {String.raw`$ max\\{f(x) | x \\in \\Omega\\} $`}
     </panel>
-    
-</Section>
+    <span>Beispiel:</span><br/>
+    <h5>Koche ein günstiges Gericht das dich Satt macht mit den Zutaten, die du Zuhause hast.</h5>
 
-<Section header={props.header}>
-    Beispiele:<br/>
-    <ul>
-        <li>
-            Planung von Aktivitäten an einem Tag:<br/>
-            {String.raw`$ \\Omega = \\{\\{a_1,a_3, a_4\\}, \\{a_2, a_7\\}, ...\\} \\ f(x) = |x| $`}
-        </li>
-        <li>
-            Planung der effizientesten Flugroute<br/>
-            {String.raw`$ \\Omega = \\{\\{r_1,r_3, r_4\\}, \\{r_2, r_7\\}, ...\\}\\ f(x) = \\sum_{i=1}^{|x|}x_i $`}
-        </li>
-        <li>
-            Optimale packen eines Koffers<br/>
-            {String.raw`$ \\Omega = \\{\\{g_1,g_3, g_4\\}, \\{g_2, g_7\\}, ...\\}\\ f(x) = \\sum_{i=1}^{|x|}x_i $`}
-        </li>
-    </ul>
+    <table style="font-size: 24px">
+        <tbody>
+            <tr>
+                <td>Zutat</td>
+                <td>$z_i$ mit Preis $p_i$</td>
+            </tr>
+            <tr>
+                <td>Gericht</td>
+                <td>{String.raw`$G = \\{z_1, z_2, ..., z_n\\}$`}</td>
+            </tr>
+            <tr>
+                <td>Mögliche Gerichte</td>
+                <td>{String.raw`$\\Omega = \\{G_1, G_2, ...\\}$`}</td>
+            </tr>
+            <tr>
+                <td>Fitnessfunktion</td>
+                <td>{String.raw`$f(G_i) = \\sum_{j=1}^n p_j $`}</td>
+            </tr>
+            <tr>
+                <td>Ziel</td>
+                <td>{String.raw`$min\\{f(G_i)\\}$`}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
     
 </Section>
 

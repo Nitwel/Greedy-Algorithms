@@ -45,11 +45,6 @@ span.to {
     color: var(--green);
 }
 
-.text-small {
-    font-size: 16px;
-    position: absolute;
-}
-
 .text {
     position: absolute;
     font-size: 20px;
@@ -57,24 +52,28 @@ span.to {
     cursor: pointer;
 }
 
+.text .katex {
+    font-size: 24px;
+}
+
 .line {
     stroke: #68b0f4;
-    stroke-width: 1px;
+    stroke-width: 2px;
 }
 
 .line.greedy {
     stroke: var(--red);
-    stroke-width: 2px;
+    stroke-width: 4px;
 }
 
 .line.astar {
     stroke: var(--yellow);
-    stroke-width: 2px;
+    stroke-width: 4px;
 }
 
 .line.astar.greedy {
     stroke: var(--orange);
-    stroke-width: 2px;
+    stroke-width: 4px;
 }
 
 .title {
@@ -85,9 +84,16 @@ span.to {
     position: absolute;
     top: 120px;
     right: 20px;
+    display: grid;
+    grid-template-columns: 1fr 60px;
+    gap: 0px 10px;
     text-align: right;
 }
 
 .reveal a.back {
     position: unset;
+}
+
+.center-title {
+    text-align: center;
 }

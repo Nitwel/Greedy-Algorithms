@@ -1,9 +1,6 @@
 .events {
     margin: 20px 0;
     font-size: 20px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
 }
 
 .events table tr:nth-child(1) td:nth-child(2) {
@@ -12,6 +9,7 @@
 
 .events table {
     margin-bottom: 20px;
+    font-size: 20px;
 }
 
 .targets {
@@ -24,5 +22,9 @@
 
 .flex {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+table tr.gray {
+    color: var(--foreground-subdued);
 }

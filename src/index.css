@@ -47,16 +47,6 @@ footer {
     color: white;
 }
 
-/* footer::before, footer::after {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 100%;
-    content: '';
-    width: 100vw;
-    background-color: var(--primary);
-} */
-
 footer::after {
     right: unset;
     left: 100%;
@@ -75,6 +65,10 @@ panel {
     font-size: 24px;
 }
 
+panel[danger] panel-title {
+    color: var(--red);
+}
+
 panel-title {
     font-size: 28px;
     display: block;
@@ -85,7 +79,7 @@ panel-title {
     display: block;
     margin: auto;
     width: 100%;
-    font-size: 32px;
+    font-size: 28px;
     text-align: left;
     padding: 40px;
     padding-top: 70px;
@@ -107,7 +101,7 @@ span.katex {
     font-size: 1em;
 }
 
-.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
     font-weight: 500;
     text-transform: none;
 }
@@ -140,4 +134,8 @@ button.bottom:active {
 
 .reveal button a, .reveal button a:hover {
     color: inherit;
+}
+
+table.motivation {
+    font-size: 26px;
 }

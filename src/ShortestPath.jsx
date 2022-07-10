@@ -203,7 +203,23 @@ function ShortestPath(props) {
         return s
     }
 
-    function generateMap(showLines = true, mapNames = (airport) => `$a_{${airport.i}}$`, mapLines = (line) => ``) {
+    function trim(s) {
+        return s.substr(0, 3).toLowerCase()
+    }
+
+    function generateExample(from, to) {
+        const fromN = trim(from.name)
+        const toN = trim(to.name)
+        return <div>
+            {`$$
+            \\begin{split} h(f_{${fromN}}, f_{${toN}})  &= \\sqrt{(x_{${toN}} - x_{${fromN}})^2 + (y_{${toN}} - y_{${fromN}})^2} \\\\
+            &= \\sqrt{(${to.x} - ${from.x})^2 + (${to.y} - ${from.y})^2} \\\\ &\\approx ${Math.round(Math.sqrt(Math.pow(to.x - from.x, 2) + Math.pow(to.y - from.y, 2)))}
+            \\end{split}
+            $$`}
+        </div>
+    }
+
+    function generateMap(showLines = true, mapNames = (airport) => `$f_{${trim(airport.name)}}$`, mapLines = (line) => ``) {
         
         return <>
             <Show when={showLines}>
@@ -223,7 +239,11 @@ function ShortestPath(props) {
     }
 
     return <>
-<Section id="h3" header={props.header} top data-auto-animate>
+<Section id="h3" header={props.header} data-auto-animate>
+    <SVG class="map"/>
+    {title}
+</Section>
+<Section header={props.header} top data-auto-animate>
     <SVG class="map"/>
     {generateMap(false, (airport) => airport.name)}
     {title}
@@ -238,26 +258,50 @@ function ShortestPath(props) {
     {generateMap()}
     {title}
 </Section>
+<Section header={props.header} top>
+    {title}
+    Wir benötigen einen Entscheidungsfaktor um eine Greedy Entscheidung zu treffen.
+    <panel class="fragment">
+        <panel-title>Heuristik</panel-title>
+        Der kürzeste Weg zwischen zwei Punkten ergibt sich wie folgt:<br/>
+        Koordinaten von Flughafen $f_i$ : $(x_i, y_i)$ <br/>
+        Luftlinie von $f_i$ nach $f_j$ : {`$ h(f_i, f_j) = \\\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2} $`}
+    </panel>
+    <br/>
+    <div class="fragment">
+        Beispiel:
+        {generateExample(getAirport(from()), getAirport(to()))}
+    </div>
+</Section>
+<Section id="reset-map" header={props.header} top data-auto-animate>
+    <SVG class="map"/>
+    {generateMap()}
+    {title}
+</Section>
 <Show when={from() != null && to() !== null}>
     <Section header={props.header} top data-auto-animate>
         <SVG class="map"/>
-        {generateMap(true, (airport) => `$h(a_{${airport.i}}) = ${Math.round(distance(airport, getAirport(to())))}$`)}
+        {generateMap(true, (airport) => `$h(f_{${trim(airport.name)}}, f_{${trim(getAirport(to()).name)}})$`)}
         {title}
-        <div class="stats">{`$h(x) = |\\overline{a_{${getAirport(to()).i}}x}|$`}</div>
+    </Section>
+    <Section header={props.header} top data-auto-animate>
+        <SVG class="map"/>
+        {generateMap(true, (airport) => `${Math.round(distance(airport, getAirport(to())))}`)}
+        {title}
     </Section>
     <For each={greedyPath()}>{(path) => 
         <Section header={props.header} top>
             <SVG class="map"/>
             {generateMap(
                 true,
-                (airport) => `$h(a_{${airport.i}}) = ${Math.round(distance(airport, getAirport(to())))}$`,
+                (airport) => `${Math.round(distance(airport, getAirport(to())))}`,
                 (line) => colorPath(line, path)
             )}
             {title}
             <div class="stats">
-                <span>Greedy Ansatz: {Math.round(path.reduce((acc, p) => acc + p.length, 0))}</span>
+                <div>Strecke Greedy:</div><div>{Math.round(path.reduce((acc, p) => acc + p.length, 0))}</div>
             </div>
-            <a href="#h3" class="back"><button class="bottom"><span class="material-icons">arrow_back</span></button></a>
+            <a href="#reset-map" class="back"><button class="bottom"><span class="material-icons">arrow_back</span></button></a>
         </Section>
     }</For>
     <For each={aStar()}>{(path) => 
@@ -265,15 +309,15 @@ function ShortestPath(props) {
             <SVG class="map"/>
             {generateMap(
                 true,
-                (airport) => `$h(a_{${airport.i}}) = ${Math.round(distance(airport, getAirport(to())))}$`,
+                (airport) => `${Math.round(distance(airport, getAirport(to())))}`,
                 (line) => colorPath(line, greedyPath().at(-1), path)
             )}
             {title}
             <div class="stats">
-                <span>Greedy Ansatz: {Math.round(greedyPath().at(-1).reduce((acc, p) => acc + p.length, 0))}</span><br/>
-                <span>Optimale Lösung: {Math.round(path.reduce((acc, p) => acc + p.length, 0))}</span>
+                <div>Strecke Greedy:</div><div>{Math.round(greedyPath().at(-1).reduce((acc, p) => acc + p.length, 0))}</div>
+                <div>Strecke Optimal:</div><div>{Math.round(path.reduce((acc, p) => acc + p.length, 0))}</div>
             </div>
-            <a href="#h3" class="back"><button class="bottom"><span class="material-icons">arrow_back</span></button></a>
+            <a href="#reset-map" class="back"><button class="bottom"><span class="material-icons">arrow_back</span></button></a>
         </Section>
     }</For>
 </Show>
