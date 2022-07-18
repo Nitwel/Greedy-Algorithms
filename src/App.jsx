@@ -16,7 +16,15 @@ function App() {
     return (
         <div class="slides">
             <Section>
-                <h2>Greedy Algorithmen</h2>
+                <center>
+                    <h2>Greedy Algorithmen</h2>
+                    Nils Twelker<br/>
+
+                    <a href="https://nitwel.de" target="_blank" style="display: inline-flex; align-items: center;"><span class="material-icons">language</span>nitwel.de</a><br/>
+                    <br/>
+                    Proseminar Theoretische Informatik<br/>
+                    TU Dresden 2022
+                </center>
             </Section>
             <Section id="h0" header={headers[0]}>
                 <ul>
@@ -31,7 +39,7 @@ function App() {
             <Motivation header={headers[1]}/>
 
             <Section header={headers[2]}>
-                <h2>Planung eines Tages im Urlaub</h2>
+                <h2>Planung eines Urlaubstags</h2>
                 <h4>Activity Selection Problem</h4>
             </Section>
 
@@ -58,7 +66,7 @@ function App() {
 
                 <panel class="fragment" danger>
                     <panel-title>Achtung</panel-title>
-                    Auch wenn nicht beide Eigenschaften zutreffen, kann es dennoch einen Greedy Algorithmus geben der Optimale Lösungen bietet.
+                    Zusammen zwar hinreichend, aber nicht notwendig.
                 </panel>
             </Section>
 

@@ -152,7 +152,7 @@ function Knapsack(props) {
             </Show>
             <Show when={showDetail === 'eff'}>
                 <div>{item.name}</div>
-                <div>{`$ h(d_{${item.i}}) = ${round(item.priority / item.weight)}$`}</div>
+                <div>{`$ p(d_{${item.i}}) = ${round(item.priority / item.weight)}$`}</div>
             </Show>
         </div>
     }
@@ -220,16 +220,16 @@ function Knapsack(props) {
 <Section header={props.header} top>
     <h3>Kofferpacken</h3>
 
-    <span>Gegenstände: {String.raw`$D = \\{d_1, d_2, ...\\}$`}</span><br/>
-    <span>Gegenstand: {String.raw`$d_i = (Name: n_i, Gewicht: g_i, Wert: w_i)$`}</span>
+    <span>Gegenstände: {String.raw`$D = \\{d_1, d_2, ..., d_i\\}$`}</span><br/>
+    <span>Gegenstand: {`$d_i = ($`} Name: $n_i,$ Gewicht: $g_i,$ Wert: {`$w_i)$`}</span>
 
     <panel class="fragment">
         <panel-title>Heuristik</panel-title>
-        Wert im Verhältnis zum Gewicht: {String.raw`$h(d_i) = \\frac{w_i}{g_i}$`}
+        Priorität: {String.raw`$p(d_i) = \\frac{w_i}{g_i}$`}
     </panel>
 
     <div class="fragment">
-        <span>Koffer: {String.raw`$K = \\{d_1, d_2, ...\\}$`}</span><br/>
+        <span>Koffer: {String.raw`$K \\subseteq D$`}</span><br/>
         <span>Maximalgewicht: {String.raw`$ G = \\sum g_i \\leq 20kg$`}</span><br/>
         <span>Gesamtwert: {String.raw`$ W = \\sum w_i$`}</span>
     </div>
@@ -244,7 +244,7 @@ function Knapsack(props) {
     </panel>
 
     <panel class="fragment">
-        <panel-title>Fractional Kofferpacken</panel-title>
+        <panel-title>Rationales Kofferpacken</panel-title>
         Es können Teile von Gegenständen in den Koffer gelegt werden.
     </panel>
 
@@ -252,7 +252,7 @@ function Knapsack(props) {
 {renderItems([{unused: items(), used: []}], '0-1', 'eff')}
 {renderItems(greedy(), '0-1', 'eff')}
 {renderItems(optimal(), 'Optimales', 'eff')}
-{renderItems(greedyFrac(), 'Fractional', 'eff')}
+{renderItems(greedyFrac(), 'Rationales', 'eff')}
 <Section header={props.header}>
     <h3>Zu beobachtende Eigenschaften</h3>
     <ul>

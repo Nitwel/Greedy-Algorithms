@@ -84,7 +84,7 @@ function SelectionProblem(props) {
 
     return <>
 <Section id="h2" header={props.header} data-auto-animate>
-    <h3>Planung eines Tages im Urlaub</h3>
+    <h3>Planung eines Urlaubstags</h3>
     <div class="flex">
         <div class="events">
             <div>Aktivitäten $A$</div>
@@ -110,10 +110,14 @@ function SelectionProblem(props) {
             </table>
         </div>
         <div class="targets fragment" data-fragment-index="3">
-            Einschränkungen:
-            <div class="fragment">Menge aller optimalen Lösungen: $\\Omega_L$</div>
-            <div class="fragment">{String.raw`$ 1. \\ \\forall (L_x, L_y) \\in \\Omega: |L_x| > |L_y| \\Rightarrow L_y \\notin \\Omega_L $`}</div>
-            <div class="fragment">{String.raw`$ 2. \\ \\forall  (a_i,a_j) \\in L \\in \\Omega_L: e_i < s_j \\vee e_j < s_i $`}</div>
+            Gesucht: <br/>
+            
+            Menge mit maximaler Anzahl von Aktivitäten $\\Omega_L$.<br/><br/>
+
+            wobei: <br/>
+            <div class="fragment">$\\Omega_L \\subseteq A$</div>
+            <div class="fragment">$a_i, a_j \\in L \\in \\Omega_L $</div>
+            <div class="fragment">{String.raw`$\\forall a_i,a_j: e_i < s_j$`} oder {String.raw`$s_i > e_j$`}</div>
         </div>
     </div>
     <button onClick={random} class="bottom"><span class="material-icons">sync</span></button>
@@ -149,8 +153,8 @@ function SelectionProblem(props) {
                 <table>
                     <thead>
                         <tr>
-                            <td>$i$</td>
-                            <td>Aktivität $a_i$</td>
+                            <td style="min-width: 10px">$i$</td>
+                            <td style="min-width: 120px">Aktivität $a_i$</td>
                             <td>Start $s_i$</td>
                             <td>Ende $e_i$</td>
                         </tr>
@@ -193,9 +197,8 @@ function Aktivitätsauswähler(a, s, e) {
 <Section header={props.header}>
     <h3>Zu beobachtende Eigenschaften</h3>
     <ul>
-        <li>Wählen des nächst besten Wertes</li>
-        <li>Auswahl wird lokal entschieden</li>
-        <li>Auswahlstrategie ändert sich nicht</li>
+        <li class="fragment">Auswahl des nächst besten Wertes</li>
+        <li class="fragment">Auswahlstrategie ändert sich nicht</li>
     </ul>
 </Section>
 </>}

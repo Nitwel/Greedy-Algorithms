@@ -6,52 +6,52 @@ function Motivation(props) {
 <Section id="h1" header={props.header}>
 <h3>Effizientes Lösen von Optimierungsproblemen</h3>
 
-    <panel>
+    <panel class="fragment">
         <panel-title>Optimierungsproblem</panel-title>
-        Menge an möglichen Lösungen: $ \\Omega $<br/>
-        Fitnessfunktion: {String.raw`$ f: \\Omega \\rightarrow \\mathbb{R}  $`}<br/>
-        Ziel: {String.raw`$ min\\{f(x) | x \\in \\Omega\\} $`} oder {String.raw`$ max\\{f(x) | x \\in \\Omega\\} $`}
+        <span class="fragment">Menge möglicher Lösungen: $ \\Omega $</span><br/>
+        <span class="fragment">Fitnessfunktion: {String.raw`$ f: \\Omega \\rightarrow \\mathbb{R}  $`}</span><br/>
+        <span class="fragment">Ziel: {String.raw`$ min\\{f(x)\\ |\\ x \\in \\Omega\\} $`} oder {String.raw`$ max\\{f(x)\\ |\\ x \\in \\Omega\\} $`}</span>
     </panel>
-    <span>Beispiel:</span><br/>
-    <h5>Koche ein günstiges Gericht das dich Satt macht mit den Zutaten, die du Zuhause hast.</h5>
-
-    <table style="font-size: 24px">
-        <tbody>
-            <tr>
-                <td>Zutat</td>
-                <td>$z_i$ mit Preis $p_i$</td>
-            </tr>
-            <tr>
-                <td>Gericht</td>
-                <td>{String.raw`$G = \\{z_1, z_2, ..., z_n\\}$`}</td>
-            </tr>
-            <tr>
-                <td>Mögliche Gerichte</td>
-                <td>{String.raw`$\\Omega = \\{G_1, G_2, ...\\}$`}</td>
-            </tr>
-            <tr>
-                <td>Fitnessfunktion</td>
-                <td>{String.raw`$f(G_i) = \\sum_{j=1}^n p_j $`}</td>
-            </tr>
-            <tr>
-                <td>Ziel</td>
-                <td>{String.raw`$min\\{f(G_i)\\}$`}</td>
-            </tr>
-        </tbody>
-    </table>
-
-
     
+    <div class="fragment">
+        <span>Beispiel:</span><br/>
+        <h5>Koche ein günstiges Gericht das dich satt macht.</h5>
+
+        <table style="font-size: 24px" class="fragment">
+            <tbody>
+                <tr>
+                    <td>Zutat</td>
+                    <td>$z_i$ mit Preis $p_i$</td>
+                </tr>
+                <tr>
+                    <td>Zutaten</td>
+                    <td>{String.raw`$Z = \\{z_1, z_2, ..., z_n \\}$`}</td>
+                </tr>
+                <tr  class="fragment">
+                    <td>Mögliche Gerichte</td>
+                    <td>{String.raw`$\\Omega = \\{G_1, G_2, ...\\ |\\ G_j \\subseteq Z\\}$`}</td>
+                </tr>
+                <tr  class="fragment">
+                    <td>Fitnessfunktion</td>
+                    <td>{String.raw`$f(G_j) =\\sum\\limits_{z_i \\in G_j} p_i $`}</td>
+                </tr>
+                <tr  class="fragment">
+                    <td>Ziel</td>
+                    <td>{String.raw`$min\\{f(G_i)\\}$`}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </Section>
 
 <Section header={props.header}>
     <h3>Was für Lösungsansätze könnten wir wählen?</h3>
     <ul>
-        <li>Greedy Algorithmen</li>
-        <li>Dynamische Algorithmen</li>
-        <li>Approximationsalgorithmen</li>
-        <li>Evolutionäre Algorithmen</li>
-        <li>Neuronales Netzwerk</li>
+        <li class="fragment">Greedy Algorithmen</li>
+        <li class="fragment">Dynamische Algorithmen</li>
+        <li class="fragment">Approximationsalgorithmen</li>
+        <li class="fragment">Evolutionäre Algorithmen</li>
+        <li class="fragment">Neuronale Netzwerke</li>
     </ul>
 </Section>
     </>

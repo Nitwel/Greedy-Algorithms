@@ -13,6 +13,7 @@
 }
 
 .targets {
+    max-width: 30vw;
     font-size: 28px;
 }
 

@@ -29,7 +29,8 @@ header {
     top: 10px;
     left: 10px;
     z-index: 500;
-    font-size: 26px;
+    font-size: 20px;
+    color: var(--foreground-subdued);
 }
 
 footer {

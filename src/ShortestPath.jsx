@@ -212,14 +212,14 @@ function ShortestPath(props) {
         const toN = trim(to.name)
         return <div>
             {`$$
-            \\begin{split} h(f_{${fromN}}, f_{${toN}})  &= \\sqrt{(x_{${toN}} - x_{${fromN}})^2 + (y_{${toN}} - y_{${fromN}})^2} \\\\
+            \\begin{split} d(z_{${fromN}}, z_{${toN}})  &= \\sqrt{(x_{${toN}} - x_{${fromN}})^2 + (y_{${toN}} - y_{${fromN}})^2} \\\\
             &= \\sqrt{(${to.x} - ${from.x})^2 + (${to.y} - ${from.y})^2} \\\\ &\\approx ${Math.round(Math.sqrt(Math.pow(to.x - from.x, 2) + Math.pow(to.y - from.y, 2)))}
             \\end{split}
             $$`}
         </div>
     }
 
-    function generateMap(showLines = true, mapNames = (airport) => `$f_{${trim(airport.name)}}$`, mapLines = (line) => ``) {
+    function generateMap(showLines = true, mapNames = (airport) => `$z_{${trim(airport.name)}}$`, mapLines = (line) => ``) {
         
         return <>
             <Show when={showLines}>
@@ -260,12 +260,11 @@ function ShortestPath(props) {
 </Section>
 <Section header={props.header} top>
     {title}
-    Wir benötigen einen Entscheidungsfaktor um eine Greedy Entscheidung zu treffen.
+    Gesucht: Entscheidungsfaktor um Greedy Entscheidungen zu treffen.<br/><br/>
     <panel class="fragment">
-        <panel-title>Heuristik</panel-title>
-        Der kürzeste Weg zwischen zwei Punkten ergibt sich wie folgt:<br/>
-        Koordinaten von Flughafen $f_i$ : $(x_i, y_i)$ <br/>
-        Luftlinie von $f_i$ nach $f_j$ : {`$ h(f_i, f_j) = \\\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2} $`}
+        <panel-title>Heuristik (Luftlinie)</panel-title>
+        Koordinaten von Flughafen $z_i$ : $(x_i, y_i) \\in \\N \\times \\N$ <br/>
+        Luftlinie von $z_i$ nach $z_j$ : {`$ d(z_i, z_j) = \\\\sqrt{(x_j - x_i)^2 + (y_j - y_i)^2} $`}
     </panel>
     <br/>
     <div class="fragment">
@@ -279,11 +278,6 @@ function ShortestPath(props) {
     {title}
 </Section>
 <Show when={from() != null && to() !== null}>
-    <Section header={props.header} top data-auto-animate>
-        <SVG class="map"/>
-        {generateMap(true, (airport) => `$h(f_{${trim(airport.name)}}, f_{${trim(getAirport(to()).name)}})$`)}
-        {title}
-    </Section>
     <Section header={props.header} top data-auto-animate>
         <SVG class="map"/>
         {generateMap(true, (airport) => `${Math.round(distance(airport, getAirport(to())))}`)}
