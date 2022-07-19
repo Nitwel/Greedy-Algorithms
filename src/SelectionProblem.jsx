@@ -185,7 +185,7 @@ function Aktivitätsauswähler(a, s, e) {
     k = 1
     L = {a[k]}
     for i = 2 to length(s) {
-        if s[i] >= e[k] {
+        if s[i] > e[k] {
             A = A + {a[i]}
             k = i
         }

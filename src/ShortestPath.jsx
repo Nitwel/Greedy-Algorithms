@@ -269,7 +269,7 @@ function ShortestPath(props) {
     <br/>
     <div class="fragment">
         Beispiel:
-        {generateExample(getAirport(from()), getAirport(to()))}
+        {!!from() && !!to() ?generateExample(getAirport(from()), getAirport(to())) : ''}
     </div>
 </Section>
 <Section id="reset-map" header={props.header} top data-auto-animate>

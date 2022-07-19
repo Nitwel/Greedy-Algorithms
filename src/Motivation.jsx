@@ -23,7 +23,7 @@ function Motivation(props) {
                     <td>Zutat</td>
                     <td>$z_i$ mit Preis $p_i$</td>
                 </tr>
-                <tr>
+                <tr class="fragment">
                     <td>Zutaten</td>
                     <td>{String.raw`$Z = \\{z_1, z_2, ..., z_n \\}$`}</td>
                 </tr>

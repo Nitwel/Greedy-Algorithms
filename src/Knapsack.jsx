@@ -220,19 +220,22 @@ function Knapsack(props) {
 <Section header={props.header} top>
     <h3>Kofferpacken</h3>
 
-    <span>Gegenstände: {String.raw`$D = \\{d_1, d_2, ..., d_i\\}$`}</span><br/>
-    <span>Gegenstand: {`$d_i = ($`} Name: $n_i,$ Gewicht: $g_i,$ Wert: {`$w_i)$`}</span>
+    <span class="fragment">Gegenstände: {String.raw`$D = \\{d_1, d_2, ..., d_i\\}$`}</span><br/>
+    <span class="fragment">Gegenstand: {`$d_i = ($`} Name: $n_i,$ Gewicht: $g_i,$ Wert: {`$w_i)$`}</span>
 
     <panel class="fragment">
         <panel-title>Heuristik</panel-title>
         Priorität: {String.raw`$p(d_i) = \\frac{w_i}{g_i}$`}
     </panel>
 
-    <div class="fragment">
-        <span>Koffer: {String.raw`$K \\subseteq D$`}</span><br/>
-        <span>Maximalgewicht: {String.raw`$ G = \\sum g_i \\leq 20kg$`}</span><br/>
-        <span>Gesamtwert: {String.raw`$ W = \\sum w_i$`}</span>
-    </div>
+    <span class="fragment">Koffer: {String.raw`$K \\subseteq D$`}</span><br/>
+    <span class="fragment">Maximalgewicht: {String.raw`$ G = \\sum\\limits_{d_i \\in K} g_i \\leq 20kg$`}</span><br/>
+    <span class="fragment">Gesamtwert: {String.raw`$ W = \\sum\\limits_{d_i \\in K} w_i$`}</span>
+
+    <panel class="fragment">
+        <panel-title>Ziel</panel-title>
+        Maximaler Gesamtwert $W$ im Koffer.
+    </panel>
 
 </Section>
 <Section header={props.header} top>
@@ -240,7 +243,7 @@ function Knapsack(props) {
 
     <panel class="fragment">
         <panel-title>0-1 Kofferpacken</panel-title>
-        Es kann ein Gegenstand entwerder in den Koffer gepackt werden oder nicht.
+        Es kann nur ein Gegenstand als ganzes hineingelegt werden.
     </panel>
 
     <panel class="fragment">
@@ -254,11 +257,11 @@ function Knapsack(props) {
 {renderItems(optimal(), 'Optimales', 'eff')}
 {renderItems(greedyFrac(), 'Rationales', 'eff')}
 <Section header={props.header}>
-    <h3>Zu beobachtende Eigenschaften</h3>
+    <h3>beobachtbare Eigenschaften</h3>
     <ul>
-        <li>Beide Variationen besitzen Optimale Substruktur</li>
-        <li>Greedy Entscheidung führt nur beim Fractional Koffer zu einer optimalen Lösung</li>
-        <li>Kleine Veränderungen der Problemstellung können große Auswirkungen darauf haben, ob ein Greedy Algorithmus zu einer Optimalen Lösung führt</li>
+        <li class="fragment">Beide Variationen besitzen optimale Substruktur</li>
+        <li class="fragment">Greedy Entscheidung  nur bei Rationales Koffer</li>
+        <li class="fragment">Kleine Veränderungen der können große Auswirkungen auf das Resultat haben</li>
     </ul>
 </Section>
         </>

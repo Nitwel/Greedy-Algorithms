@@ -80,15 +80,15 @@ function App() {
             <Section header={headers[4]}>
                 <h3>Vor und Nachteile von Greedy Algorithmen</h3>
                 <div class="parallel">
-                    <div>
+                    <div class="fragment">
                         <h4>Pro</h4>
                         <ul>
                             <li>Schnell auszuführen</li>
-                            <li>Einfach zu entwickeln</li>
-                            <li>Kann zu einer ausreichent guten Lösung führen bei komplexen Problemen</li>
+                            <li class="fragment">Einfach zu entwickeln</li>
+                            <li class="fragment">ausreichent guten Lösungen bei komplexen Problemen</li>
                         </ul>
                     </div>
-                    <div>
+                    <div class="fragment">
                         <h4>Contra</h4>
                         <ul>
                             <li>Nicht immer anwendbar</li>
