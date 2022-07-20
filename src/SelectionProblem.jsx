@@ -1,53 +1,29 @@
 import Section from "./Section"
-import seedrandom from "seedrandom"
-import { createSignal, createEffect } from "solid-js"
+import { createSignal } from "solid-js"
 import './SelectionProblem.css'
 import deck from "./index"
 
+const [events, setEvents] = createSignal([
+    { i: 0, name: 'Grillen', start: '18:30', end: '19:00'}, 
+    { i: 1, name: 'Zoobesuch', start: '12:30', end: '18:00'}, 
+    { i: 2, name: 'Baden', start: '16:15', end: '18:00'}, 
+    { i: 3, name: 'Kino', start: '20:45', end: '23:00'}, 
+    { i: 4, name: 'Tauchen', start: '16:45', end: '18:30'}, 
+    { i: 5, name: 'Besichtigung', start: '11:15', end: '15:30'}, 
+    { i: 6, name: 'Wandern', start: '8:30', end: '17:00'}, 
+    { i: 7, name: 'Shoppen', start: '11:00', end: '18:45'}, 
+    { i: 8, name: 'Reittour', start: '13:30', end: '15:45'}, 
+    { i: 9, name: 'Minigolf', start: '14:30', end: '16:45'}
+])
+
 function SelectionProblem(props) {
-    const [seed, setSeed] = createSignal(0)
-    let rng = seedrandom(`${seed()}`)
 
-    let eventNames = [
-        'Grillen',
-        'Zoobesuch',
-        'Baden',
-        'Kino',
-        'Tauchen',
-        'Besichtigung',
-        'Wandern',
-        'Shoppen',
-        'Reittour',
-        'Minigolf'
-    ]
-
-    function randomTimeRange() {
-        const start = Math.floor(rng() * (24 * 4 - 1))
-        const end = Math.floor(start + rng() * (24 * 4 - start))
-        return [start, end]
+    function parseTime(time) {
+        const [hour, minute] = time.split(':').map(Number);
+        return hour * 60 + minute;
     }
 
-    function formatTime(time) {
-        return `${Math.floor(time / 4)}:${['00','15','30','45'].at(time % 4)}`
-    }
-
-    const getEvents = () => {
-        const events = []
-        for(let i in eventNames) {
-            const times = randomTimeRange()
-            events.push({
-                i,
-                name: eventNames[i],
-                start: times[0],
-                end: times[1]
-            })
-        }
-        return events
-    }
-
-    const [events, setEvents] = createSignal(getEvents())
-
-    const eventsSorted = () => [...events()].sort((a,b) => a.end - b.end)
+    const eventsSorted = () => [...events()].sort((a,b) => parseTime(a.end) - parseTime(b.end))
 
     const steps = () => {
         const steps = [
@@ -56,10 +32,10 @@ function SelectionProblem(props) {
         ]
 
         for(let i = 0; i < eventsSorted().length; i++) {
-            const lastEnd = steps.at(-1).solutions.at(-1)?.end ?? 0
+            const lastEnd = steps.at(-1).solutions.at(-1)?.end ?? '00:00'
             const nextStart = steps.at(-1).events.at(i).start
 
-            if(nextStart < lastEnd) {
+            if(parseTime(nextStart) < parseTime(lastEnd)) {
                 steps.push({events: grayOut(eventsSorted(), i), solutions: steps.at(-1).solutions})
             } else {
                 steps.push({events: grayOut(eventsSorted(), i), solutions: [...steps.at(-1).solutions, steps.at(-1).events.at(i)], type: 'add'})
@@ -77,33 +53,65 @@ function SelectionProblem(props) {
         })
     }
 
-    function random() {
-        setEvents(getEvents())
-        deck.getPlugins().katex.init(deck)
+    function saveValues(event) {
+        if(event.key === 'Enter' || event.keyCode === 13) {
+            event.preventDefault()
+
+            const table = readTable(document.getElementById('main-table'))
+            window.localStorage.setItem('table', JSON.stringify(table))
+            updateValues(table)
+            deck.getPlugins().katex.init(deck)
+        }
+    }
+
+    window.addEventListener('storage', (event) => {
+        if(event.key === 'table') {
+            updateValues(JSON.parse(event.newValue))
+            deck.getPlugins().katex.init(deck)
+        }
+    })
+
+    function updateValues(data) {
+        setEvents(data.map(activity => ({
+            i: activity[0],
+            name: activity[1],
+            start: activity[2],
+            end: activity[3]
+        })))
+    }
+
+    function readTable(table) {
+        const rows = table.querySelectorAll('tbody tr')
+        const data = [...rows].map(row => {
+            const cells = [...row.querySelectorAll('td')]
+            const values = cells.map(cell => cell.innerText)
+            return values
+        })
+        return data
     }
 
     return <>
-<Section id="h2" header={props.header} data-auto-animate>
+<Section id="reset-selection" header={props.header} data-auto-animate>
     <h3>Planung eines Urlaubstags</h3>
     <div class="flex">
         <div class="events">
             <div>Aktivitäten $A$</div>
-            <table data-id="table-0">
+            <table data-id="table-0" id="main-table" onKeyDown={saveValues}>
                 <thead>
                     <tr>
-                        <td class="fragment" data-fragment-index="2">$i$</td>
-                        <td>Aktivität <span class="fragment" data-fragment-index="2">$a_i$</span></td>
-                        <td>Start <span class="fragment" data-fragment-index="2">$s_i$</span></td>
-                        <td>Ende <span class="fragment" data-fragment-index="2">$e_i$</span></td>
+                        <td>$i$</td>
+                        <td>Aktivität <span>$a_i$</span></td>
+                        <td>Start <span>$s_i$</span></td>
+                        <td>Ende <span>$e_i$</span></td>
                     </tr>
                 </thead>
                 <tbody>
                     <For each={events()}>{(event) =>
                         <tr>
-                            <td class="fragment" data-fragment-index="2">{event.i}</td>
-                            <td>{event.name}</td>
-                            <td>{formatTime(event.start)}</td>
-                            <td>{formatTime(event.end)}</td>
+                            <td>{event.i}</td>
+                            <td contentEditable>{event.name}</td>
+                            <td contentEditable>{event.start}</td>
+                            <td contentEditable>{event.end}</td>
                         </tr>
                     }</For>
                 </tbody>
@@ -120,10 +128,9 @@ function SelectionProblem(props) {
             <div class="fragment">{String.raw`$\\forall a_i,a_j: e_i < s_j$`} oder {String.raw`$s_i > e_j$`}</div>
         </div>
     </div>
-    <button onClick={random} class="bottom"><span class="material-icons">sync</span></button>
 </Section>
 <For each={steps()}>{(step, i) => 
-    <Section header={props.header} data-auto-animate data-auto-animate-duration="0.5">
+    <Section header={props.header}>
         <div class="events flex">
             <div>
                 <div>Aktivitäten $A$</div>
@@ -141,8 +148,8 @@ function SelectionProblem(props) {
                             <tr data-id={"aa" +event.i} class={'gray' in event ? 'gray' : ''}>
                                 <td>{event.i}</td>
                                 <td>{event.name}</td>
-                                <td>{formatTime(event.start)}</td>
-                                <td>{formatTime(event.end)}</td>
+                                <td>{event.start}</td>
+                                <td>{event.end}</td>
                             </tr>
                         }</For>
                     </tbody>
@@ -164,21 +171,22 @@ function SelectionProblem(props) {
                             <tr data-id={"aa" +event.i}>
                                 <td>{event.i}</td>
                                 <td>{event.name}</td>
-                                <td>{formatTime(event.start)}</td>
-                                <td>{formatTime(event.end)}</td>
+                                <td>{event.start}</td>
+                                <td>{event.end}</td>
                             </tr>
                         }</For>
                     </tbody>
                 </table>
             </div>
         </div>
-</Section>
+        <a href="#reset-selection" class="back"><button class="bottom"><span class="material-icons">arrow_back</span></button></a>
+    </Section>
 }</For>
 <Section header={props.header}>
     <h3>Pseudocode des Algorithmus</h3>
     <pre><code data-line-numbers="1-3|4-8|9-16">{`a = {${events().map(event => event.name).slice(0,6).join(', ') + ', ...'}}
-s = {${events().map(event => formatTime(event.start)).join(', ')}}
-e = {${events().map(event => formatTime(event.end)).join(', ')}}
+s = {${events().map(event => event.start).join(', ')}}
+e = {${events().map(event => event.end).join(', ')}}
 
 function Aktivitätsauswähler(a, s, e) {
     Sortiere Aktivitäten nach ihrem Endzeitpunkt
@@ -193,12 +201,17 @@ function Aktivitätsauswähler(a, s, e) {
     return L
 }
     `}</code></pre>
+
+    <aside class="notes">
+        k ist Hilfsvariable zum merken der letzten Endzeit
+    </aside>
 </Section>
 <Section header={props.header}>
     <h3>Zu beobachtende Eigenschaften</h3>
     <ul>
         <li class="fragment">Auswahl des nächst besten Wertes</li>
         <li class="fragment">Auswahlstrategie ändert sich nicht</li>
+        <li class="fragment">Berechnet immer optimale Lösung</li>
     </ul>
 </Section>
 </>}

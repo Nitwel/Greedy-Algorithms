@@ -1,4 +1,5 @@
 import Section from "./Section"
+import Topf from './assets/topf.svg'
 
 function Motivation(props) {
     return <>
@@ -17,7 +18,9 @@ function Motivation(props) {
         <span>Beispiel:</span><br/>
         <h5>Koche ein günstiges Gericht das dich satt macht.</h5>
 
-        <table style="font-size: 24px" class="fragment">
+        <Topf style="width: 400px; position: absolute; bottom: 100px; right: 0px"/>
+
+        <table class="fragment" style="font-size: 24px; margin: 0">
             <tbody>
                 <tr>
                     <td>Zutat</td>

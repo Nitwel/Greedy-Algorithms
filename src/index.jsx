@@ -4,6 +4,7 @@ import Reveal from 'reveal.js';
 import Markdown from 'reveal.js/plugin/markdown/markdown.esm.js';
 import {KaTeX} from 'reveal.js/plugin/math/katex';
 import RevealHighlight from 'reveal.js/plugin/highlight/highlight.js'
+import Notes from 'reveal.js/plugin/notes/notes.js'
 
 import './index.css';
 import App from './App';
@@ -12,7 +13,7 @@ let deck = new Reveal({
     controls: false,
     progress: false,
     transition: 'none',
-    plugins: [ Markdown, KaTeX, RevealHighlight ]
+    plugins: [ Markdown, KaTeX, RevealHighlight, Notes ]
 })
 
 render(() => <App />, document.getElementById('root'));

@@ -93,12 +93,25 @@ function ShortestPath(props) {
         }
         if(edit() === 'to') {
             setTo(airport.key)
+            window.localStorage.setItem('to', airport.key)
         } else {
             setFrom(airport.key)
+            window.localStorage.setItem('from', airport.key)
         }
         deck.getPlugins().katex.init(deck)
         setEdit(null)
     }
+
+    window.addEventListener('storage', (event) => {
+        if(event.key === 'from') {
+            setFrom(event.newValue)
+            deck.getPlugins().katex.init(deck)
+        }
+        if(event.key === 'to') {
+            setTo(event.newValue)
+            deck.getPlugins().katex.init(deck)
+        }
+    })
 
     const title = () => <h3 class="path-title">
         Was ist der kürzeste Weg von 
@@ -239,7 +252,7 @@ function ShortestPath(props) {
     }
 
     return <>
-<Section id="h3" header={props.header} data-auto-animate>
+<Section header={props.header} data-auto-animate>
     <SVG class="map"/>
     {title}
 </Section>

@@ -48,10 +48,19 @@
     box-sizing: border-box;
     background-color: var(--green);
     border-radius: 10px;
+    position: relative;
 }
 
 .item.large {
     font-size: 22px;
+}
+
+.item .info {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 18px;
+    text-align: right;
 }
 
 .koffer-space {

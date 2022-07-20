@@ -3,6 +3,8 @@ import Motivation from "./Motivation";
 import Section from "./Section";
 import SelectionProblem from "./SelectionProblem";
 import ShortestPath from "./ShortestPath";
+import Holiday from './assets/holiday.svg'
+import Plane from './assets/plane.svg'
 
 function App() {
     const headers = [
@@ -23,8 +25,17 @@ function App() {
                     <a href="https://nitwel.de" target="_blank" style="display: inline-flex; align-items: center;"><span class="material-icons">language</span>nitwel.de</a><br/>
                     <br/>
                     Proseminar Theoretische Informatik<br/>
-                    TU Dresden 2022
+                    TU Dresden 2022<br/>
+                    <a href="https://theo.nitwel.de" target="_blank" style="display: inline-flex; align-items: center;">theo.nitwel.de</a><br/>
+
                 </center>
+
+                <aside class="notes">
+                    Intro
+                    Wer ich bin
+                    Urlaubsthematik
+                    Interaktive Folien
+                </aside>
             </Section>
             <Section id="h0" header={headers[0]}>
                 <ul>
@@ -38,16 +49,20 @@ function App() {
             
             <Motivation header={headers[1]}/>
 
-            <Section header={headers[2]}>
+            <Section id="h2" header={headers[2]}>
                 <h2>Planung eines Urlaubstags</h2>
                 <h4>Activity Selection Problem</h4>
+
+                <Holiday class="holiday"/>
             </Section>
 
             <SelectionProblem header={headers[2]}/>
 
-            <Section header={headers[3]}>
+            <Section id="h3" header={headers[3]}>
                 <h2>Kürzester Weg zwischen zwei Orten</h2>
                 <h4>Shortest Path Problem</h4>
+
+                <Plane class="plane"/>
             </Section>
 
             <ShortestPath header={headers[3]}/>
@@ -77,6 +92,14 @@ function App() {
 
             <Knapsack header={headers[3]}/>
 
+            <Section id="h4" header={headers[4]}>
+                <h3>Weitere Probleme die Greedy optimal lößt</h3>
+                <ul>
+                    <li class="fragment">Datenkompession: Huffman Codes</li>
+                    <li class="fragment">kürzester Weg von einem Punkt: Dijkstra Algorithmus</li>
+                </ul>
+            </Section> 
+
             <Section header={headers[4]}>
                 <h3>Vor und Nachteile von Greedy Algorithmen</h3>
                 <div class="parallel">
@@ -95,7 +118,13 @@ function App() {
                         </ul>
                     </div>
                 </div>
-            </Section>       
+            </Section>
+            <Section header={headers[4]}>
+                <h3>Vielen Dank für eure Aufmerksamkeit!</h3>
+                <br/>
+                Folien unter 
+                <a href="https://theo.nitwel.de" target="_blank" style="display: inline-flex; align-items: center;">theo.nitwel.de</a><br/>
+            </Section> 
         </div>
     );
 }

@@ -140,3 +140,20 @@ button.bottom:active {
 table.motivation {
     font-size: 26px;
 }
+
+.holiday {
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    height: 400px;
+    transform: translate(50%, -50%);
+}
+
+.plane {
+    position: relative;
+    top: 67%;
+    left: 72%;
+    transform: translate(-50%, -50%) scale(4);
+    height: 50px;
+    opacity: 0.9;
+}

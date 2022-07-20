@@ -153,6 +153,10 @@ function Knapsack(props) {
             <Show when={showDetail === 'eff'}>
                 <div>{item.name}</div>
                 <div>{`$ p(d_{${item.i}}) = ${round(item.priority / item.weight)}$`}</div>
+                <div class="info">
+                    <div>{`$g_${item.i} = ${round(item.weight)}$`}</div>
+                    <div>{`$w_${item.i} = ${round(item.priority)}$`}</div>
+                </div>
             </Show>
         </div>
     }
@@ -175,6 +179,7 @@ function Knapsack(props) {
                                 </div>
                             </div>
                             <div class="items">
+                                <span>Gegenstände: $D$</span>
                                 <For each={step.unused}>
                                     {(item) => renderItem(item, showDetail)}
                                 </For>
@@ -260,8 +265,8 @@ function Knapsack(props) {
     <h3>beobachtbare Eigenschaften</h3>
     <ul>
         <li class="fragment">Beide Variationen besitzen optimale Substruktur</li>
-        <li class="fragment">Greedy Entscheidung  nur bei Rationales Koffer</li>
-        <li class="fragment">Kleine Veränderungen der können große Auswirkungen auf das Resultat haben</li>
+        <li class="fragment">Greedy Entscheidung  nur bei Rationales Kofferpacken</li>
+        <li class="fragment">Kleine Veränderungen können große Auswirkungen haben</li>
     </ul>
 </Section>
         </>
