@@ -31,10 +31,10 @@ function App() {
                 </center>
 
                 <aside class="notes">
-                    Intro
-                    Wer ich bin
-                    Urlaubsthematik
-                    Interaktive Folien
+                    Intro<br/>
+                    Wer ich bin<br/>
+                    Urlaubsthematik<br/>
+                    Interaktive Folien<br/>
                 </aside>
             </Section>
             <Section id="h0" header={headers[0]}>
