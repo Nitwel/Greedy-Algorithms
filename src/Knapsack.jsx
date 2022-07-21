@@ -265,7 +265,7 @@ function Knapsack(props) {
 {renderItems(optimal(), 'Optimales', 'eff')}
 {renderItems(greedyFrac(), 'Rationales', 'eff')}
 <Section header={props.header}>
-    <h3>beobachtbare Eigenschaften</h3>
+    <h3>Beobachtbare Eigenschaften</h3>
     <ul>
         <li class="fragment">Beide Variationen besitzen optimale Substruktur</li>
         <li class="fragment">Greedy Entscheidung  nur bei Rationales Kofferpacken</li>

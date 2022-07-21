@@ -110,7 +110,7 @@ function App() {
             <Knapsack header={headers[3]}/>
 
             <Section id="h4" header={headers[4]}>
-                <h3>Weitere Probleme die Greedy optimal lößt</h3>
+                <h3>Weitere Probleme die Greedy optimal löst</h3>
                 <ul>
                     <li class="fragment">Datenkompession: Huffman Codes</li>
                     <li class="fragment">kürzester Weg von einem Punkt: Dijkstra Algorithmus</li>
@@ -125,7 +125,7 @@ function App() {
                         <ul>
                             <li>Schnell auszuführen</li>
                             <li class="fragment">Einfach zu entwickeln</li>
-                            <li class="fragment">ausreichent guten Lösungen bei komplexen Problemen</li>
+                            <li class="fragment">Ausreichend gute Lösungen bei komplexen Problemen</li>
                         </ul>
                     </div>
                     <div class="fragment">

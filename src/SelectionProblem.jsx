@@ -227,7 +227,7 @@ function Aktivitätsauswähler(a, s, e) {
 <Section header={props.header}>
     <h3>Zu beobachtende Eigenschaften</h3>
     <ul>
-        <li class="fragment">Auswahl des nächst besten Wertes</li>
+        <li class="fragment">Auswahl des nächstbesten Wertes</li>
         <li class="fragment">Auswahlstrategie ändert sich nicht</li>
         <li class="fragment">Berechnet immer optimale Lösung</li>
     </ul>
