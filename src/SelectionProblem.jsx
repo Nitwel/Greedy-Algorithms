@@ -229,7 +229,7 @@ function Aktivitätsauswähler(a, s, e) {
     <ul>
         <li class="fragment">Auswahl des nächstbesten Wertes</li>
         <li class="fragment">Auswahlstrategie ändert sich nicht</li>
-        <li class="fragment">Berechnet immer optimale Lösung</li>
+        <li class="fragment">Berechnet immer eine optimale Lösung</li>
     </ul>
     <aside class="notes">
         Stichpunkte abarbeiten<br/>
