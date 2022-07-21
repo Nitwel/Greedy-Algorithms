@@ -122,12 +122,23 @@ function SelectionProblem(props) {
             
             Menge mit maximaler Anzahl von Aktivitäten $\\Omega_L$.<br/><br/>
 
-            wobei: <br/>
-            <div class="fragment">$\\Omega_L \\subseteq A$</div>
-            <div class="fragment">$a_i, a_j \\in L \\in \\Omega_L $</div>
-            <div class="fragment">{String.raw`$\\forall a_i,a_j: e_i < s_j$`} oder {String.raw`$s_i > e_j$`}</div>
+            <div class="fragment">
+                wobei: <br/>
+                <div >{String.raw`$\\Omega_L = \\{L\\ |\\ L\\subseteq A\\}$`}</div>
+                <div class="fragment">$a_i, a_j \\in L$</div>
+                <div class="fragment">{String.raw`$\\forall a_i,a_j: e_i < s_j$`} oder {String.raw`$s_i > e_j$`}</div>
+            </div>
         </div>
     </div>
+
+    <aside class="notes">
+        Gesucht:<br/>
+        Alle lösungen mit maximaler Anzahl von Aktivitäten<br/><br/>
+
+        Einschränkungen:<br/>
+        Lösungen dürfen nur existiernde Aktivitäten enthalten<br/>
+        Aktivitäten in Lösung dürfen sich nicht überschneiden
+    </aside>
 </Section>
 <For each={steps()}>{(step, i) => 
     <Section header={props.header}>
@@ -180,6 +191,11 @@ function SelectionProblem(props) {
             </div>
         </div>
         <a href="#reset-selection" class="back"><button class="bottom"><span class="material-icons">arrow_back</span></button></a>
+        <aside class="notes">
+            Betrachten, wie ein greedy Algo so ein Problem lösen würde<br/>
+            1. Sortieren nach Endzeit<br/>
+            2. Nehmen was passt
+        </aside>
     </Section>
 }</For>
 <Section header={props.header}>
@@ -203,7 +219,9 @@ function Aktivitätsauswähler(a, s, e) {
     `}</code></pre>
 
     <aside class="notes">
-        k ist Hilfsvariable zum merken der letzten Endzeit
+        k ist Hilfsvariable zum merken der letzten Endzeit<br/>
+        gehen durch jeden Wert und falls startzeit der neuen Aktivität größer als letzte endzeit:<br/>
+        hinzufügen der neuen Aktivität zu L und aktualisieren der Endzeit<br/>
     </aside>
 </Section>
 <Section header={props.header}>
@@ -213,6 +231,11 @@ function Aktivitätsauswähler(a, s, e) {
         <li class="fragment">Auswahlstrategie ändert sich nicht</li>
         <li class="fragment">Berechnet immer optimale Lösung</li>
     </ul>
+    <aside class="notes">
+        Stichpunkte abarbeiten<br/>
+        konnten verstehen wie sich greedy verhält<br/>
+        Interessant zu wissen was die Grenzen von Greedy algorithmen sind?
+    </aside>
 </Section>
 </>}
 

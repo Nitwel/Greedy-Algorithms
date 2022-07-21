@@ -256,20 +256,31 @@ function ShortestPath(props) {
     <SVG class="map"/>
     {title}
 </Section>
-<Section header={props.header} top data-auto-animate>
+<Section id="map-names" header={props.header} top data-auto-animate>
     <SVG class="map"/>
     {generateMap(false, (airport) => airport.name)}
     {title}
+    <aside class="notes">
+        Oslo oben mitte<br/>
+        Sofia unten rechts<br/><br/>
+    </aside>
 </Section>
 <Section header={props.header} top data-auto-animate>
     <SVG class="map"/>
     {generateMap(false)}
     {title}
+    <aside class="notes">
+        Vergeben von kürzeln
+    </aside>
 </Section>
 <Section header={props.header} top data-auto-animate>
     <SVG class="map"/>
     {generateMap()}
     {title}
+    <aside class="notes">
+        Flugverbindungen sind benötigt.<br/>
+        Brauchen nun Entscheidungsfaktor<br/>
+    </aside>
 </Section>
 <Section header={props.header} top>
     {title}
@@ -284,17 +295,27 @@ function ShortestPath(props) {
         Beispiel:
         {!!from() && !!to() ?generateExample(getAirport(from()), getAirport(to())) : ''}
     </div>
+    <aside class="notes">
+        mit hilfe der Distanz zwischen zwei Flughäfen durch Satz des Pytagoras<br/>
+    </aside>
 </Section>
 <Section id="reset-map" header={props.header} top data-auto-animate>
     <SVG class="map"/>
     {generateMap()}
     {title}
+    <aside class="notes">
+        Wollen jetzt distanz von jedem Flughafen nach Sofia
+    </aside>
 </Section>
 <Show when={from() != null && to() !== null}>
     <Section header={props.header} top data-auto-animate>
         <SVG class="map"/>
         {generateMap(true, (airport) => `${Math.round(distance(airport, getAirport(to())))}`)}
         {title}
+        <aside class="notes">
+            Nun von Oslo aus kleinste Zahl finden.<br/>
+            Ausgewählte Stecke zusammenrechnen<br/>
+        </aside>
     </Section>
     <For each={greedyPath()}>{(path) => 
         <Section header={props.header} top>
@@ -325,6 +346,12 @@ function ShortestPath(props) {
                 <div>Strecke Optimal:</div><div>{Math.round(path.reduce((acc, p) => acc + p.length, 0))}</div>
             </div>
             <a href="#reset-map" class="back"><button class="bottom"><span class="material-icons">arrow_back</span></button></a>
+            <aside class="notes">
+                Man konnte sehen Greedy findet eine optimale Lösung<br/>
+                Jetzt andere Verbindung betrachten - dazu Zuschauer fragen<br/><br/>
+
+                Wie kann man vorzeitig erkennen ob immer optimal lösbar?
+            </aside>
         </Section>
     }</For>
 </Show>

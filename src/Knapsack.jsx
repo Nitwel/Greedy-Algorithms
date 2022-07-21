@@ -256,6 +256,9 @@ function Knapsack(props) {
         Es können Teile von Gegenständen in den Koffer gelegt werden.
     </panel>
 
+    <aside class="notes">
+        Teile von Gegenständen z.B. Kleidung
+    </aside>
 </Section>
 {renderItems([{unused: items(), used: []}], '0-1', 'eff')}
 {renderItems(greedy(), '0-1', 'eff')}

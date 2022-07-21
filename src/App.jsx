@@ -22,7 +22,7 @@ function App() {
                     <h2>Greedy Algorithmen</h2>
                     Nils Twelker<br/>
 
-                    <a href="https://nitwel.de" target="_blank" style="display: inline-flex; align-items: center;"><span class="material-icons">language</span>nitwel.de</a><br/>
+                    <a href="mailto:uni@nitwel.de" target="_blank" style="display: inline-flex; align-items: center;">uni@nitwel.de</a><br/>
                     <br/>
                     Proseminar Theoretische Informatik<br/>
                     TU Dresden 2022<br/>
@@ -31,20 +31,26 @@ function App() {
                 </center>
 
                 <aside class="notes">
-                    Intro<br/>
+                    Intro - Greedy erklären<br/>
                     Wer ich bin<br/>
-                    Urlaubsthematik<br/>
-                    Interaktive Folien<br/>
+                    Urlaubsthematik - wetter<br/>
+                    Interaktive Folien -später<br/>
                 </aside>
             </Section>
             <Section id="h0" header={headers[0]}>
                 <ul>
-                    <For each={headers}>{(header, i) => 
+                    <For each={headers.slice(1)}>{(header, i) => 
                         <a href={"#/h" + i()}>
                             <li>{header}</li>
                         </a>
                     }</For>
                 </ul>
+                <aside class="notes">
+                    Zuerst will ich euch motivieren warum es sich lohnt über greedy zu wissen<br/>
+                    grob betrachten - was greedy macht<br/>
+                    genauer eingehen - wo sind Grenzen<br/>
+                    finale übersicht
+                </aside>
             </Section>
             
             <Motivation header={headers[1]}/>
@@ -67,7 +73,7 @@ function App() {
 
             <ShortestPath header={headers[3]}/>
 
-            <Section header={headers[3]}>
+            <Section id="properties" header={headers[3]}>
                 Wie erkennt man, wann Greedy Algorithmen optimale Lösungen zu Problemen bieten?
                 <panel class="fragment">
                     <panel-title>Optimale Substruktur</panel-title>
@@ -83,11 +89,22 @@ function App() {
                     <panel-title>Achtung</panel-title>
                     Zusammen zwar hinreichend, aber nicht notwendig.
                 </panel>
+
+                <aside class="notes">
+                    Wenn kürzester Weg von Hamburg nach Sofia über Dresden und Wien<br/>
+                    Dann kürzester Weg von Dresden nach Sofia auch über Wien<br/><br/>
+
+                    Selection Problem immer nächste Aktivität nehmen.
+                </aside>
             </Section>
 
             <Section header={headers[3]}>
                 <h2>Packen eines Koffers</h2>
                 <h4>Knapsack Problem</h4>
+
+                <aside class="notes">
+                    Beide Eigenschaften gut am Kofferpacken zu sehen
+                </aside>
             </Section> 
 
             <Knapsack header={headers[3]}/>

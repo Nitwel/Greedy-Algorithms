@@ -16,7 +16,7 @@ function Motivation(props) {
     
     <div class="fragment">
         <span>Beispiel:</span><br/>
-        <h5>Koche ein günstiges Gericht das dich satt macht.</h5>
+        <h5>Koche ein günstiges Gericht.</h5>
 
         <Topf style="width: 400px; position: absolute; bottom: 100px; right: 0px"/>
 
@@ -40,22 +40,40 @@ function Motivation(props) {
                 </tr>
                 <tr  class="fragment">
                     <td>Ziel</td>
-                    <td>{String.raw`$min\\{f(G_i)\\}$`}</td>
+                    <td>{String.raw`$min\\{f(G_i)\\ |\\ G_i \\in \\Omega \\}$`}</td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <aside class="notes">
+        Fangen wir an wie man Optimierungsprobleme effizient lösen kann<br/>
+        Was ist ein Optimierungsproblem?<br/>
+        Omega<br/>
+        eingabe Omega - rückgabe rationale Zahl<br/>
+        Lösung finden, die min oder max wert hat mit fitness<br/>
+        an folgendem Beispiel visualisieren<br/>
+    </aside>
 </Section>
 
 <Section header={props.header}>
     <h3>Was für Lösungsansätze könnten wir wählen?</h3>
     <ul>
-        <li class="fragment">Greedy Algorithmen</li>
         <li class="fragment">Dynamische Algorithmen</li>
         <li class="fragment">Approximationsalgorithmen</li>
         <li class="fragment">Evolutionäre Algorithmen</li>
         <li class="fragment">Neuronale Netzwerke</li>
+        <li class="fragment">Greedy Algorithmen</li>
     </ul>
+
+    <aside class="notes">
+        dynamisch - Zerlegung in Teilprobleme - rekursiv lösen<br/>
+        approx - versucht einer optimalen lösung nahezukommen<br/>
+        evolution - angelehnt an natur durch evolution<br/>
+        neuronale - gehirn nachahmen<br/>
+        greedy - gierige Entscheidung zur lösung anzutasten<br/><br/>
+        jetzt greedy anschauen
+    </aside>
 </Section>
     </>
 }
