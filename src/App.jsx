@@ -141,6 +141,10 @@ function App() {
                 <br/>
                 Folien unter 
                 <a href="https://theo.nitwel.de" target="_blank" style="display: inline-flex; align-items: center;">theo.nitwel.de</a><br/>
+
+                <aside class="notes">
+                    Auf interaktivität hinweisen.
+                </aside>
             </Section> 
         </div>
     );
